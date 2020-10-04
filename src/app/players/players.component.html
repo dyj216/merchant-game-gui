@@ -1,0 +1,21 @@
+<div class="player-search">
+  <mat-form-field class="player-search-field">
+    <mat-label>Player code</mat-label>
+    <input matInput type="text" [(ngModel)]="currentPlayerCode">
+  </mat-form-field>
+  <button mat-flat-button color="primary" (click)="getPlayer()">Get</button>
+</div>
+
+<h1 *ngIf="currentPlayer" class="player-title">Player: {{currentPlayer.code}}</h1>
+<mat-table *ngIf="currentPlayer" [dataSource]="dataSource" class="mat-elevation-z8">
+  <ng-container matColumnDef="name">
+    <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.name | titlecase}} </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="value">
+    <mat-header-cell *matHeaderCellDef> Value </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.value}} </mat-cell>
+  </ng-container>
+  <mat-header-row *matHeaderRowDef="displayedColumns" class="player-table-header"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+</mat-table>

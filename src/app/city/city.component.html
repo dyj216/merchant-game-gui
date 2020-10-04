@@ -1,0 +1,17 @@
+<h1 *ngIf="name" class="city-title">{{name}}</h1>
+<mat-table *ngIf="dataSource" [dataSource]="dataSource" class="mat-elevation-z8">
+  <ng-container matColumnDef="name">
+    <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.name | titlecase}} </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="buy_price">
+    <mat-header-cell *matHeaderCellDef> Buy Price </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.buy_price}} </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="sell_price">
+    <mat-header-cell *matHeaderCellDef> Sell Price </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.sell_price}} </mat-cell>
+  </ng-container>
+  <mat-header-row *matHeaderRowDef="displayedColumns" class="city-table-header"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+</mat-table>
