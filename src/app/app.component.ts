@@ -8,7 +8,7 @@ import {ChangeDetectorRef, Component, OnDestroy} from '@angular/core';
 })
 export class AppComponent implements OnDestroy {
   title = 'Merchant Game';
- mobileQuery: MediaQueryList;
+  mobileQuery: MediaQueryList;
 
   private readonly mobileQueryListener: () => void;
 
