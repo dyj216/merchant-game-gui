@@ -1,0 +1,53 @@
+table {
+  width: 100%;
+}
+
+tr.example-detail-row {
+  height: 0;
+}
+
+tr.example-element-row:not(.example-expanded-row):hover {
+  background: whitesmoke;
+}
+
+tr.example-element-row:not(.example-expanded-row):active {
+  background: #efefef;
+}
+
+.example-element-row td {
+  border-bottom-width: 0;
+}
+
+.example-element-detail {
+  overflow: hidden;
+  display: flex;
+}
+
+.mat-radio-button {
+  margin: 0 30px 0 0;
+}
+
+.trade-details {
+  margin: 16px;
+  width: 100%;
+}
+
+.trade-direction {
+  width: 100%;
+  margin: 0 16px 16px 0;
+}
+
+.trade-amount {
+  margin: 0;
+  width: 100%;
+  display: flex;
+}
+
+.mat-form-field {
+  flex: 30%;
+  margin: 0 16px 0 0;
+}
+
+.mat-slider {
+  flex: 70%;
+}

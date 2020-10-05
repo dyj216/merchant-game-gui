@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {ApiService} from '../api.service';
+import {animate, state, style, transition, trigger} from '@angular/animations';
+import {PlayersComponent} from "../players/players.component";
 
 interface Price {
   buy_price: bigint;
@@ -11,13 +13,24 @@ interface Price {
 @Component({
   selector: 'app-city',
   templateUrl: './city.component.html',
-  styleUrls: ['./city.component.css']
+  styleUrls: ['./city.component.scss'],
+  animations: [
+    trigger('detailExpand', [
+      state('collapsed', style({height: '0px', minHeight: '0'})),
+      state('expanded', style({height: '*'})),
+      transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
+    ]),
+  ],
 })
 export class CityComponent implements OnInit {
   name: string;
   displayedColumns: string[] = ['name', 'buy_price', 'sell_price'];
   dataSource;
+  expandedElement: null;
   rates: {};
+  @ViewChild(PlayersComponent)
+  private player: PlayersComponent;
+  public amount = 0;
 
   constructor(
     private route: ActivatedRoute,
@@ -25,6 +38,12 @@ export class CityComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCity();
+  }
+
+  toggleDetails(element): void {
+    if (this.player.currentPlayer) {
+      this.expandedElement = this.expandedElement === element ? null : element;
+    }
   }
 
   prepareDataSource(): void {

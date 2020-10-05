@@ -22,6 +22,8 @@ import {MatTableModule} from '@angular/material/table';
 import { CitiesComponent } from './cities/cities.component';
 import { CityComponent } from './city/city.component';
 import { PlayerComponent } from './player/player.component';
+import {MAT_RADIO_DEFAULT_OPTIONS, MatRadioModule} from '@angular/material/radio';
+import {MatSliderModule} from "@angular/material/slider";
 
 @NgModule({
   declarations: [
@@ -49,8 +51,13 @@ import { PlayerComponent } from './player/player.component';
     MatCardModule,
     MatTableModule,
     HttpClientModule,
+    MatRadioModule,
+    MatSliderModule,
   ],
-  providers: [],
+  providers: [{
+    provide: MAT_RADIO_DEFAULT_OPTIONS,
+    useValue: { color: 'primary' },
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

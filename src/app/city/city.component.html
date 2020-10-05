@@ -1,17 +1,50 @@
 <h1 *ngIf="name" class="city-title">{{name}}</h1>
-<mat-table *ngIf="dataSource" [dataSource]="dataSource" class="mat-elevation-z8">
+
+<app-players inline="false"></app-players>
+
+<table mat-table *ngIf="dataSource" [dataSource]="dataSource" multiTemplateDataRows class="mat-elevation-z8">
   <ng-container matColumnDef="name">
-    <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
-    <mat-cell *matCellDef="let element"> {{element.name | titlecase}} </mat-cell>
+    <th mat-header-cell *matHeaderCellDef> Name </th>
+    <td mat-cell *matCellDef="let element"> {{element.name | titlecase}} </td>
   </ng-container>
   <ng-container matColumnDef="buy_price">
-    <mat-header-cell *matHeaderCellDef> Buy Price </mat-header-cell>
-    <mat-cell *matCellDef="let element"> {{element.buy_price}} </mat-cell>
+    <th mat-header-cell *matHeaderCellDef> Buy Price </th>
+    <td mat-cell *matCellDef="let element"> {{element.buy_price}} </td>
   </ng-container>
   <ng-container matColumnDef="sell_price">
-    <mat-header-cell *matHeaderCellDef> Sell Price </mat-header-cell>
-    <mat-cell *matCellDef="let element"> {{element.sell_price}} </mat-cell>
+    <th mat-header-cell *matHeaderCellDef> Sell Price </th>
+    <td mat-cell *matCellDef="let element"> {{element.sell_price}} </td>
   </ng-container>
-  <mat-header-row *matHeaderRowDef="displayedColumns" class="city-table-header"></mat-header-row>
-  <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
-</mat-table>
+
+  <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
+  <ng-container matColumnDef="expandedDetail">
+    <td mat-cell *matCellDef="let element" [attr.colspan]="displayedColumns.length">
+      <div class="example-element-detail"
+           [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+        <div class="trade-details">
+          <div class="trade-direction">
+            <mat-radio-group aria-label="Trade direction">
+              <mat-radio-button value="buy">Buy</mat-radio-button>
+              <mat-radio-button value="sell">Sell</mat-radio-button>
+            </mat-radio-group>
+          </div>
+          <div class="trade-amount">
+            <mat-form-field>
+              <mat-label>Amount</mat-label>
+              <input matInput type="number" [(ngModel)]="amount">
+            </mat-form-field>
+            <mat-slider thumbLabel min="0" max="100" color="primary" [(value)]="amount"></mat-slider>
+          </div>
+          <button mat-flat-button color="primary">Trade</button>
+        </div>
+      </div>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns" class="city-table-header"></tr>
+  <tr mat-row *matRowDef="let element; columns: displayedColumns"
+           class="example-element-row"
+           [class.example-expanded-row]="expandedElement === element"
+           (click)="toggleDetails(element)"></tr>
+  <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+</table>
