@@ -5,8 +5,8 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
 import {PlayersComponent} from '../players/players.component';
 
 interface Price {
-  buy_price: bigint;
-  sell_price: bigint;
+  buy_price: number;
+  sell_price: number;
 }
 
 
