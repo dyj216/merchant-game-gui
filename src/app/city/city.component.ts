@@ -31,6 +31,7 @@ export class CityComponent implements OnInit {
   @ViewChild(PlayersComponent)
   private player: PlayersComponent;
   public amount = 0;
+  public tradeDirection = 'buy';
 
   constructor(
     private route: ActivatedRoute,
@@ -41,6 +42,7 @@ export class CityComponent implements OnInit {
   }
 
   toggleDetails(element): void {
+    this.amount = 0;
     if (this.player.currentPlayer) {
       this.expandedElement = this.expandedElement === element ? null : element;
     }
@@ -66,4 +68,8 @@ export class CityComponent implements OnInit {
       });
   }
 
+  getValue(element): number {
+    const price = this.tradeDirection === 'buy' ? element.buy_price: element.sell_price;
+    return price * this.amount;
+  }
 }

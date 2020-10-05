@@ -44,14 +44,18 @@ tr.example-element-row:not(.example-expanded-row):active {
 .trade-amount {
   margin: 0;
   width: 100%;
-  display: flex;
 }
 
 .mat-form-field {
-  flex: 30%;
-  margin: 0 16px 0 0;
+  margin: 0;
+  width: 100%;
 }
 
 .mat-slider {
-  flex: 70%;
+  margin: 0;
+  width: 100%;
+}
+
+.calculated-value {
+  margin: 0 0 16px 0;
 }
