@@ -8,8 +8,10 @@
   right: 0;
 }
 
-h1.app-name {
-  margin-left: 8px;
+a.app-name {
+  text-decoration: none;
+  padding-left: 16px;
+  padding-right: 16px;
 }
 
 .content {
