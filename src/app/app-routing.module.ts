@@ -5,6 +5,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import {ViewSelectorComponent} from './view-selector/view-selector.component';
 import {CitiesComponent} from './cities/cities.component';
 import {CityComponent} from './city/city.component';
+import {PlayerComponent} from "./player/player.component";
 
 
 const routes: Routes = [
@@ -17,6 +18,10 @@ const routes: Routes = [
     path: 'players',
     component: PlayersComponent,
     data: { title: 'Players' }
+  },
+  {
+    path: 'players/:id',
+    component: PlayerComponent,
   },
   {
     path: 'cities',

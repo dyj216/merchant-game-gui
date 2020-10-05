@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { ApiService } from '../api.service';
 import {Player} from '../player';
 
@@ -8,9 +8,9 @@ import {Player} from '../player';
   styleUrls: ['./players.component.scss']
 })
 export class PlayersComponent implements OnInit {
+  @Input() inline = false;
   currentPlayerCode = '';
   displayedColumns: string[] = ['name', 'value'];
-  dataSource;
   currentPlayer: Player = null;
 
   constructor(private apiService: ApiService) {}
@@ -18,21 +18,10 @@ export class PlayersComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  prepareDataSource(): void {
-    this.dataSource = [
-      {name: 'Money', value: this.currentPlayer.money}
-    ];
-    for (const [k, v] of Object.entries(this.currentPlayer.items)) {
-      this.dataSource.push({name: k, value: parseInt(v.toString(), 10)});
-    }
-  }
-
   getPlayer(): void {
     this.apiService.getPlayer(this.currentPlayerCode)
       .subscribe(player => {
         this.currentPlayer = player;
-        this.prepareDataSource();
       });
   }
-
 }

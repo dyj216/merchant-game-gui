@@ -21,6 +21,7 @@ import {MatCardModule} from '@angular/material/card';
 import {MatTableModule} from '@angular/material/table';
 import { CitiesComponent } from './cities/cities.component';
 import { CityComponent } from './city/city.component';
+import { PlayerComponent } from './player/player.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { CityComponent } from './city/city.component';
     PageNotFoundComponent,
     ViewSelectorComponent,
     CitiesComponent,
-    CityComponent
+    CityComponent,
+    PlayerComponent
   ],
   imports: [
     AppRoutingModule,
