@@ -2,7 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {ApiService} from '../api.service';
 import {animate, state, style, transition, trigger} from '@angular/animations';
-import {PlayersComponent} from "../players/players.component";
+import {PlayersComponent} from '../players/players.component';
 
 interface Price {
   buy_price: bigint;
