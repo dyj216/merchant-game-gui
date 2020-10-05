@@ -23,7 +23,7 @@ import { CitiesComponent } from './cities/cities.component';
 import { CityComponent } from './city/city.component';
 import { PlayerComponent } from './player/player.component';
 import {MAT_RADIO_DEFAULT_OPTIONS, MatRadioModule} from '@angular/material/radio';
-import {MatSliderModule} from "@angular/material/slider";
+import {MatSliderModule} from '@angular/material/slider';
 
 @NgModule({
   declarations: [
