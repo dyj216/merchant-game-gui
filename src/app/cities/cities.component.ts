@@ -5,7 +5,7 @@ import {CityListElement} from '../city-list-element';
 @Component({
   selector: 'app-cities',
   templateUrl: './cities.component.html',
-  styleUrls: ['./cities.component.css']
+  styleUrls: ['./cities.component.scss']
 })
 export class CitiesComponent implements OnInit {
   cities: CityListElement[] = [];
