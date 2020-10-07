@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {Player} from './player';
 import {CityListElement} from './city-list-element';
 import { Observable, of } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {catchError} from 'rxjs/operators';
 
 @Injectable({
@@ -10,6 +10,9 @@ import {catchError} from 'rxjs/operators';
 })
 export class ApiService {
   private apiRoot = 'http://127.0.0.1:8000/merchant_game/api/';
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  };
 
   constructor(
     private http: HttpClient) { }
@@ -37,6 +40,14 @@ export class ApiService {
       .pipe(
         catchError(this.handleError<any>('getCityCurrentRates', {}))
       );
+  }
+
+  trade(cityName: string, player: string, tradeDirection: string, item: string, amount: number): Observable<any> {
+    return this.http.post(this.apiRoot.concat(`cities/${cityName}/${tradeDirection}/`), {
+      player,
+      item,
+      amount
+    }, this.httpOptions);
   }
 
   private handleError<T>(operation = 'operation', result?: T) {

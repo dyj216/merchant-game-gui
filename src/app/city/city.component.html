@@ -22,8 +22,10 @@
       <div class="example-element-detail"
            [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
         <div class="trade-details">
+          <p *ngIf="this.player.currentPlayer">Money: {{ getMoney() }}</p>
+          <p *ngIf="this.player.currentPlayer">Owned: {{ getOwned(element) }}</p>
           <div class="trade-direction">
-            <mat-radio-group aria-label="Trade direction" [(ngModel)]="tradeDirection">
+            <mat-radio-group aria-label="Trade direction" [(ngModel)]="tradeDirection" (change)="setMaxAmount(element)">
               <mat-radio-button value="buy">Buy</mat-radio-button>
               <mat-radio-button value="sell">Sell</mat-radio-button>
             </mat-radio-group>
@@ -31,12 +33,12 @@
           <div class="trade-amount">
             <mat-form-field appearance="fill">
               <mat-label>Amount</mat-label>
-              <input matInput type="number" [(ngModel)]="amount">
+              <input matInput type="number" [(ngModel)]="amount" [max]="maxAmount">
             </mat-form-field>
-            <mat-slider thumbLabel min="0" max="100" color="primary" [(value)]="amount"></mat-slider>
+            <mat-slider thumbLabel min="0" [max]="maxAmount"  color="primary" [(ngModel)]="amount"></mat-slider>
           </div>
           <div class="calculated-value">Value: {{ getValue(element) }}</div>
-          <button mat-flat-button color="primary">Trade</button>
+          <button mat-flat-button color="primary" (click)="trade(element)">Trade</button>
         </div>
       </div>
     </td>
