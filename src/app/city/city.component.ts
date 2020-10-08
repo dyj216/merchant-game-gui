@@ -29,10 +29,15 @@ export class CityComponent implements OnInit {
   expandedElement: null;
   rates: {};
   @ViewChild(PlayersComponent)
-  private player: PlayersComponent;
+  public player: PlayersComponent;
   public amount = 0;
   public tradeDirection = 'buy';
   public maxAmount = 0;
+  robbedPlayerCode: string;
+  robType = 'money';
+  giftedPlayerCode: string;
+  giftedMoney: number;
+  giftedItems = {};
 
   constructor(
     private route: ActivatedRoute,
@@ -86,7 +91,13 @@ export class CityComponent implements OnInit {
   }
 
   getMoney(): number {
-    return this.player.currentPlayer.money;
+    let money = 0;
+    if (this.player) {
+      if (this.player.currentPlayer) {
+        money = this.player.currentPlayer.money;
+      }
+    }
+    return money;
   }
 
   getOwned(element): number {
@@ -98,6 +109,29 @@ export class CityComponent implements OnInit {
       (response) => {
         console.log(response);
         this.expandedElement = null;
+        this.player.getPlayer();
+        this.prepareDataSource();
+      }
+    );
+  }
+
+  rob(): void {
+    this.apiService.rob(this.player.currentPlayer.code, this.robType, this.robbedPlayerCode).subscribe(
+      (response) => {
+        console.log(response);
+        this.robbedPlayerCode = '';
+        this.player.getPlayer();
+        this.prepareDataSource();
+      }
+    );
+  }
+
+  gift(): void {
+    this.apiService.gift(this.player.currentPlayer.code, this.giftedPlayerCode, this.giftedMoney, this.giftedItems).subscribe(
+      (response) => {
+        console.log(response);
+        this.giftedPlayerCode = '';
+        this.giftedItems = {};
         this.player.getPlayer();
         this.prepareDataSource();
       }

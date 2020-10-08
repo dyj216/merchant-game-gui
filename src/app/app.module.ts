@@ -24,6 +24,7 @@ import { CityComponent } from './city/city.component';
 import { PlayerComponent } from './player/player.component';
 import {MAT_RADIO_DEFAULT_OPTIONS, MatRadioModule} from '@angular/material/radio';
 import {MatSliderModule} from '@angular/material/slider';
+import {MatTabsModule} from '@angular/material/tabs';
 
 @NgModule({
   declarations: [
@@ -35,25 +36,26 @@ import {MatSliderModule} from '@angular/material/slider';
     CityComponent,
     PlayerComponent
   ],
-  imports: [
-    AppRoutingModule,
-    BrowserModule,
-    BrowserAnimationsModule,
-    MatSidenavModule,
-    MatListModule,
-    RouterModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatInputModule,
-    MatButtonModule,
-    MatFormFieldModule,
-    FormsModule,
-    MatCardModule,
-    MatTableModule,
-    HttpClientModule,
-    MatRadioModule,
-    MatSliderModule,
-  ],
+    imports: [
+        AppRoutingModule,
+        BrowserModule,
+        BrowserAnimationsModule,
+        MatSidenavModule,
+        MatListModule,
+        RouterModule,
+        MatToolbarModule,
+        MatIconModule,
+        MatInputModule,
+        MatButtonModule,
+        MatFormFieldModule,
+        FormsModule,
+        MatCardModule,
+        MatTableModule,
+        HttpClientModule,
+        MatRadioModule,
+        MatSliderModule,
+        MatTabsModule,
+    ],
   providers: [{
     provide: MAT_RADIO_DEFAULT_OPTIONS,
     useValue: { color: 'primary' },

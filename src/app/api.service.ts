@@ -50,6 +50,21 @@ export class ApiService {
     }, this.httpOptions);
   }
 
+  rob(robber: string, robType: string, robbed: string): Observable<any> {
+    return this.http.post(this.apiRoot.concat(`players/${robber}/rob/`), {
+      robbed,
+      rob_money: robType === 'money'
+    }, this.httpOptions);
+  }
+
+  gift(giver: string, taker: string, money: number, items: object): Observable<any> {
+    return this.http.post(this.apiRoot.concat(`players/${giver}/gift/`), {
+      taker,
+      money,
+      items
+    }, this.httpOptions);
+  }
+
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
 
