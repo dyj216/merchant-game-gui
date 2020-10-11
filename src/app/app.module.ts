@@ -25,6 +25,7 @@ import { PlayerComponent } from './player/player.component';
 import {MAT_RADIO_DEFAULT_OPTIONS, MatRadioModule} from '@angular/material/radio';
 import {MatSliderModule} from '@angular/material/slider';
 import {MatTabsModule} from '@angular/material/tabs';
+import { BankComponent } from './bank/bank.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import {MatTabsModule} from '@angular/material/tabs';
     ViewSelectorComponent,
     CitiesComponent,
     CityComponent,
-    PlayerComponent
+    PlayerComponent,
+    BankComponent
   ],
     imports: [
         AppRoutingModule,

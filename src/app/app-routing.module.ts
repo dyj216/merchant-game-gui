@@ -5,7 +5,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import {ViewSelectorComponent} from './view-selector/view-selector.component';
 import {CitiesComponent} from './cities/cities.component';
 import {CityComponent} from './city/city.component';
-import {PlayerComponent} from "./player/player.component";
+import {PlayerComponent} from './player/player.component';
+import {BankComponent} from './bank/bank.component';
 
 
 const routes: Routes = [
@@ -31,6 +32,10 @@ const routes: Routes = [
   {
     path: 'cities/:name',
     component: CityComponent,
+  },
+  {
+    path: 'bank',
+    component: BankComponent
   },
   { path: '**', component: PageNotFoundComponent }
 ];
