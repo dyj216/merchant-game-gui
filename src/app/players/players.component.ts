@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
 import { ApiService } from '../api.service';
 import {Player} from '../player';
 
@@ -9,8 +9,8 @@ import {Player} from '../player';
 })
 export class PlayersComponent implements OnInit {
   @Input() inline = false;
+  @Output() playerReady = new EventEmitter<boolean>();
   currentPlayerCode = '';
-  displayedColumns: string[] = ['name', 'value'];
   currentPlayer: Player = null;
 
   constructor(private apiService: ApiService) {}
@@ -22,6 +22,7 @@ export class PlayersComponent implements OnInit {
     this.apiService.getPlayer(this.currentPlayerCode)
       .subscribe(player => {
         this.currentPlayer = player;
+        this.playerReady.emit(true);
       });
   }
 }
