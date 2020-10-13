@@ -3,7 +3,21 @@
 <mat-tab-group mat-stretch-tabs dynamicHeight class="example-stretched-tabs mat-elevation-z4">
   <mat-tab label="Loan">
     <div class="mat-tab-content">
-      <app-players inline="false"></app-players>
+      <app-players [inline]="true" (playerReady)="getLoans($event)"></app-players>
+      <div *ngIf="player?.currentPlayer" class="player-loans">
+        <button mat-flat-button color="primary">Get new loan</button>
+        <mat-accordion>
+          <mat-expansion-panel role="listitem" *ngFor="let loan of loans">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <span [ngStyle]="{'text-decoration': loan.payback ? 'line-through': 'none'}">Borrowed {{ loan.amount }} in round {{ loan.round }}</span>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <p *ngIf="loan.payback">Paid back {{ loan.payback?.payback_amount }} in round {{ loan.payback?.round?.number }}</p>
+            <button *ngIf="!loan.payback" mat-flat-button color="primary" (click)="payback(loan)">Pay back</button>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </div>
     </div>
   </mat-tab>
 

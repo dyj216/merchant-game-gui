@@ -26,6 +26,7 @@ import {MAT_RADIO_DEFAULT_OPTIONS, MatRadioModule} from '@angular/material/radio
 import {MatSliderModule} from '@angular/material/slider';
 import {MatTabsModule} from '@angular/material/tabs';
 import { BankComponent } from './bank/bank.component';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import { BankComponent } from './bank/bank.component';
         MatRadioModule,
         MatSliderModule,
         MatTabsModule,
+        MatExpansionModule,
     ],
   providers: [{
     provide: MAT_RADIO_DEFAULT_OPTIONS,

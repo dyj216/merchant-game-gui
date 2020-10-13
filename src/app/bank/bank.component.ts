@@ -26,6 +26,7 @@ export class BankComponent implements OnInit {
   @ViewChild(PlayersComponent)
   public player: PlayersComponent;
   public amount = 0;
+  loans = [];
 
   constructor(
     private apiService: ApiService) { }
@@ -45,5 +46,25 @@ export class BankComponent implements OnInit {
 
   getOwned(element): number {
     return this.player.currentPlayer.items[element.name] ? this.player.currentPlayer.items[element.name] : 0;
+  }
+
+  getLoan(url): void {
+    this.apiService.getLoan(url).subscribe(loan => {
+      if (loan.payback) {
+        this.apiService.getPayback(loan.payback).subscribe(payback => loan.payback = payback);
+      }
+      this.loans.push(loan);
+    });
+  }
+
+  getLoans(playerReady: boolean): void {
+    this.loans = [];
+    this.player.currentPlayer.loans.forEach((loan) => {
+      this.getLoan(loan);
+    });
+  }
+
+  payback(loan): void {
+    this.apiService.payback(loan.pay_back_loan).subscribe(payback => loan.payback = payback);
   }
 }

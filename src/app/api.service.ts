@@ -65,6 +65,18 @@ export class ApiService {
     }, this.httpOptions);
   }
 
+  getLoan(url): Observable<any> {
+    return this.http.get(url, this.httpOptions);
+  }
+
+  getPayback(id): Observable<any> {
+    return this.http.get(this.apiRoot.concat(`loan-paybacks/${id}/`), this.httpOptions);
+  }
+
+  payback(url): Observable<any> {
+    return this.http.post(url, {}, this.httpOptions);
+  }
+
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
 
