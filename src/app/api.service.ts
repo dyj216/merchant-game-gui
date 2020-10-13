@@ -24,7 +24,7 @@ export class ApiService {
   getPlayer(id: string): Observable<Player> {
     return this.http.get<Player>(this.apiRoot.concat('players/').concat(id))
       .pipe(
-        catchError(this.handleError<Player>('getPlayer', {code: '', items: {}, money: 0}))
+        catchError(this.handleError<Player>('getPlayer', {code: '', items: {}, money: 0, loans: [], paybacks: []}))
       );
   }
 
