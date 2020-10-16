@@ -77,6 +77,10 @@ export class ApiService {
     return this.http.post(url, {}, this.httpOptions);
   }
 
+  getEndData(): Observable<object> {
+    return this.http.get(this.apiRoot.concat(`end`), this.httpOptions);
+  }
+
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
 

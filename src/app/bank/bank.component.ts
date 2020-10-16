@@ -3,6 +3,7 @@ import {ActivatedRoute} from '@angular/router';
 import {ApiService} from '../api.service';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import {PlayersComponent} from '../players/players.component';
+import {Observable} from "rxjs";
 
 interface Price {
   buy_price: number;
@@ -27,11 +28,43 @@ export class BankComponent implements OnInit {
   public player: PlayersComponent;
   public amount = 0;
   loans = [];
+  dataSource = null;
+  displayedColumns: ['player', 'money'];
+  expandedElement = null;
 
   constructor(
     private apiService: ApiService) { }
 
   ngOnInit(): void {
+  }
+
+  toggleDetails(element): void {
+    this.amount = 0;
+    if (this.player.currentPlayer) {
+      this.expandedElement = this.expandedElement === element ? null : element;
+    }
+  }
+
+  prepareDataSource(): void {
+    this.getEndData().subscribe(endData => {
+      this.dataSource = [];
+      console.log(endData);
+      for (const [k, v] of Object.entries<any>(endData)) {
+        if (k === 'final_prices') {
+
+        }
+        else {
+          this.dataSource.push({
+            player: k,
+            final_money: v.final_money
+          });
+        }
+      }
+    });
+  }
+
+  getEndData(): Observable<any> {
+    return this.apiService.getEndData();
   }
 
   getMoney(): number {
