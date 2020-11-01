@@ -1,0 +1,4 @@
+<p>
+  Round: <span id="round">{{ currentRound }}</span>
+  Time left: <countdown #cd [config]="config" (event)="handleCountDownEvent($event)"></countdown>
+</p>

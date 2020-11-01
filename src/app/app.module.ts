@@ -27,6 +27,8 @@ import {MatSliderModule} from '@angular/material/slider';
 import {MatTabsModule} from '@angular/material/tabs';
 import { BankComponent } from './bank/bank.component';
 import {MatExpansionModule} from '@angular/material/expansion';
+import { RoundCounterComponent } from './round-counter/round-counter.component';
+import {CountdownModule} from 'ngx-countdown';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
     CitiesComponent,
     CityComponent,
     PlayerComponent,
-    BankComponent
+    BankComponent,
+    RoundCounterComponent
   ],
     imports: [
         AppRoutingModule,
@@ -59,6 +62,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
         MatSliderModule,
         MatTabsModule,
         MatExpansionModule,
+        CountdownModule,
     ],
   providers: [{
     provide: MAT_RADIO_DEFAULT_OPTIONS,

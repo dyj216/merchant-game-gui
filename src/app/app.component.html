@@ -2,6 +2,8 @@
   <div class="container" [class.is-mobile]="mobileQuery.matches">
     <mat-toolbar color="primary" class="toolbar">
       <a class="mat-focus-indicator mat-button app-name" routerLink="">{{ title }}</a>
+      <span class="spacer"></span>
+      <app-round-counter></app-round-counter>
     </mat-toolbar>
     <div class="content-container">
       <div class="content">
