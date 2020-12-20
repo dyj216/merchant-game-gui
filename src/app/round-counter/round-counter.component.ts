@@ -26,7 +26,10 @@ export class RoundCounterComponent implements OnInit {
     this.apiService.getGameData().subscribe(gameDataList => {
       this.gameData = gameDataList.pop();
       this.currentRound = this.gameData.current_round;
-      this.config = {leftTime: this.gameData.round_remaining_seconds, format: 'mm:ss'};
+      this.config = {
+        leftTime: this.gameData.round_remaining_seconds > 0 ? this.gameData.round_remaining_seconds : 0,
+        format: 'mm:ss',
+      };
     })
   }
 
