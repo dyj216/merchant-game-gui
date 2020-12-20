@@ -19,10 +19,15 @@ export class PlayersComponent implements OnInit {
   }
 
   getPlayer(): void {
-    this.apiService.getPlayer(this.currentPlayerCode)
-      .subscribe(player => {
-        this.currentPlayer = player;
-        this.playerReady.emit(true);
-      });
+    if (this.currentPlayerCode !== '') {
+      this.apiService.getPlayer(this.currentPlayerCode)
+        .subscribe(player => {
+          if (player.code !== '') {
+            this.currentPlayer = player;
+            this.apiService.snackBar.open(`'${player.code}' data fetched.`, 'Close')
+            this.playerReady.emit(true);
+          }
+        });
+    }
   }
 }
