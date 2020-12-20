@@ -35,6 +35,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarModule} from '@angular/material/snack-bar';
 import { JwtModule } from '@auth0/angular-jwt';
+import { SettingsComponent } from './settings/settings.component';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -52,7 +53,8 @@ export function tokenGetter() {
     BankComponent,
     RoundCounterComponent,
     LoginComponent,
-    UserMenuComponent
+    UserMenuComponent,
+    SettingsComponent,
   ],
   imports: [
     AppRoutingModule,
@@ -95,6 +97,7 @@ export function tokenGetter() {
   ],
   entryComponents: [
     LoginComponent,
+    SettingsComponent,
   ],
   bootstrap: [AppComponent]
 })

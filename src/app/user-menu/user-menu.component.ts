@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import {LoginComponent} from '../login/login.component';
 import {ApiService} from '../api.service';
+import {SettingsComponent} from '../settings/settings.component';
 
 @Component({
   selector: 'app-user-menu',
@@ -28,8 +29,16 @@ export class UserMenuComponent implements OnInit {
     }, 250, this.apiService);
   }
 
-  openDialog() {
-    this.dialog.open(LoginComponent);
+  openLoginDialog() {
+    this.dialog.open(LoginComponent, {
+      width: '400px',
+    });
+  }
+
+  openSettingsDialog() {
+    this.dialog.open(SettingsComponent, {
+      width: '400px',
+    });
   }
 
 }

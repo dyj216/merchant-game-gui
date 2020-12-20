@@ -4,7 +4,11 @@
   </button>
 </div>
 <mat-menu #userMenu="matMenu" xPosition="before" yPosition="below">
-  <button mat-menu-item (click)="openDialog()" *ngIf="!isLoggedIn()">
+  <button mat-menu-item (click)="openSettingsDialog()">
+    <mat-icon>cloud</mat-icon>
+    <span>Settings</span>
+  </button>
+  <button mat-menu-item (click)="openLoginDialog()" *ngIf="!isLoggedIn()">
     <mat-icon>login</mat-icon>
     <span>Login</span>
   </button>

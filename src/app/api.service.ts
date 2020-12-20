@@ -1,9 +1,9 @@
 import {Injectable} from '@angular/core';
 import {Player} from './player';
 import {CityListElement} from './city-list-element';
-import {Observable, of} from 'rxjs';
-import {HttpClient, HttpEvent, HttpHandler, HttpHeaders, HttpInterceptor, HttpRequest} from '@angular/common/http';
-import {catchError, shareReplay, tap} from 'rxjs/operators';
+import {BehaviorSubject, Observable, of} from 'rxjs';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {catchError, tap} from 'rxjs/operators';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import {Router} from '@angular/router';
@@ -17,7 +17,7 @@ interface User {
   providedIn: 'root'
 })
 export class ApiService {
-  private apiRoot = 'http://127.0.0.1:8000/merchant_game/api/';
+  private apiRoot = new BehaviorSubject('');
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
@@ -29,8 +29,33 @@ export class ApiService {
     private router: Router,
   ) { }
 
+    getApiRoot(): string {
+      const api_root = localStorage.getItem('api_root');
+      return  api_root ? api_root : '';
+    }
+
+    getApiRootBehaviorSubject() {
+      return this.apiRoot;
+    }
+
+    clearApiRoot() {
+      localStorage.removeItem('api_root')
+    }
+
+    setApiRoot(address: string) {
+      address = address.endsWith('/') ? address : address.concat('/');
+      return this.http.get<any>(address.concat('check/'), this.httpOptions).pipe(
+        tap(res => {
+          if (res.api_root) {
+            localStorage.setItem('api_root', res.api_root)
+            this.apiRoot.next(res.api_root);
+          }
+        }),
+      );
+    }
+
     login(username: string, password: string) {
-      return this.http.post<User>(this.apiRoot.concat('token/'), {username, password}).pipe(
+      return this.http.post<User>(this.getApiRoot().concat('token/'), {username, password}).pipe(
         tap(res => this.setSession(res))
       );
     }
@@ -54,32 +79,32 @@ export class ApiService {
     }
 
   getPlayers(): Observable<Player[]> {
-    return this.http.get<Player[]>(this.apiRoot.concat('players/'));
+    return this.http.get<Player[]>(this.getApiRoot().concat('players/'));
   }
 
   getPlayer(id: string): Observable<Player> {
-    return this.http.get<Player>(this.apiRoot.concat('players/').concat(id))
+    return this.http.get<Player>(this.getApiRoot().concat('players/').concat(id))
       .pipe(
         catchError(this.handleError<Player>('getPlayer', {code: '', items: {}, money: 0, loans: [], paybacks: []}, id)),
       );
   }
 
   getCities(): Observable<CityListElement[]> {
-    return this.http.get<CityListElement[]>(this.apiRoot.concat('cities/'))
+    return this.http.get<CityListElement[]>(this.getApiRoot().concat('cities/'))
       .pipe(
         catchError(this.handleError<CityListElement[]>('getCities', []))
       );
   }
 
   getCityCurrentRates(cityName: string): Observable<any>{
-    return this.http.get<any>(this.apiRoot.concat(`cities/${cityName}/current_rates/`))
+    return this.http.get<any>(this.getApiRoot().concat(`cities/${cityName}/current_rates/`))
       .pipe(
         catchError(this.handleError<any>('getCityCurrentRates', {}))
       );
   }
 
   trade(cityName: string, player: string, tradeDirection: string, item: string, amount: number): Observable<any> {
-    return this.http.post(this.apiRoot.concat(`cities/${cityName}/${tradeDirection}/`), {
+    return this.http.post(this.getApiRoot().concat(`cities/${cityName}/${tradeDirection}/`), {
       player,
       item,
       amount
@@ -87,14 +112,14 @@ export class ApiService {
   }
 
   rob(robber: string, robType: string, robbed: string): Observable<any> {
-    return this.http.post(this.apiRoot.concat(`players/${robber}/rob/`), {
+    return this.http.post(this.getApiRoot().concat(`players/${robber}/rob/`), {
       robbed,
       rob_money: robType === 'money'
     }, this.httpOptions);
   }
 
   gift(giver: string, taker: string, money: number, items: object): Observable<any> {
-    return this.http.post(this.apiRoot.concat(`players/${giver}/gift/`), {
+    return this.http.post(this.getApiRoot().concat(`players/${giver}/gift/`), {
       taker,
       money,
       items
@@ -106,7 +131,7 @@ export class ApiService {
   }
 
   getPayback(id): Observable<any> {
-    return this.http.get(this.apiRoot.concat(`loan-paybacks/${id}/`), this.httpOptions);
+    return this.http.get(this.getApiRoot().concat(`loan-paybacks/${id}/`), this.httpOptions);
   }
 
   payback(url): Observable<any> {
@@ -114,11 +139,11 @@ export class ApiService {
   }
 
   getEndData(): Observable<object> {
-    return this.http.get(this.apiRoot.concat(`end`), this.httpOptions);
+    return this.http.get(this.getApiRoot().concat(`end`), this.httpOptions);
   }
 
   getGameData(): Observable<any> {
-    return this.http.get(this.apiRoot.concat('game-data'), this.httpOptions);
+    return this.http.get(this.getApiRoot().concat('game-data'), this.httpOptions);
   }
 
   private handleError<T>(operation = 'operation', result?: T, o?: string) {
@@ -132,7 +157,7 @@ export class ApiService {
       }
 
       if (error.status === 404) {
-        const text = o ? `'${o}'` : 'Object';
+        const text = o ? `'${o}'` : 'Item';
         this.snackBar.open(`'${text}' is not found`, 'Close')
       }
 

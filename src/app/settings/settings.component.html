@@ -1,0 +1,12 @@
+<form [formGroup]="form">
+    <mat-form-field appearance="fill">
+        <mat-label>Server:</mat-label>
+        <input matInput name="server" formControlName="server">
+    </mat-form-field>
+    <div class="form-buttons">
+      <button mat-flat-button color="primary"
+                (click)="setServer()">Set</button>
+      <button mat-button color="primary" (click)="dialogRef.close()">Close</button>
+      <button mat-button color="primary" (click)="clearServer()">Clear</button>
+    </div>
+</form>
