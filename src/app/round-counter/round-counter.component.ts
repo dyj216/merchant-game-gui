@@ -34,8 +34,7 @@ export class RoundCounterComponent implements OnInit {
   }
 
   handleCountDownEvent(event: CountdownEvent): void {
-    console.log(event);
-    if (event.action === 'done') {
+    if (event.action === 'done' && this.gameData) {
       if (this.gameData.current_round !== this.gameData.last_round) {
         this.getGameData();
       }
