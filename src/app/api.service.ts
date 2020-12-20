@@ -1,9 +1,40 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Player} from './player';
 import {CityListElement} from './city-list-element';
-import { Observable, of } from 'rxjs';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {catchError} from 'rxjs/operators';
+import {Observable, of} from 'rxjs';
+import {HttpClient, HttpEvent, HttpHandler, HttpHeaders, HttpInterceptor, HttpRequest} from '@angular/common/http';
+import {catchError, shareReplay, tap} from 'rxjs/operators';
+import {MatSnackBar} from '@angular/material/snack-bar';
+
+interface User {
+  username,
+  password,
+}
+
+
+@Injectable()
+export class AuthInterceptor implements HttpInterceptor {
+
+    intercept(
+      req: HttpRequest<any>,
+      next: HttpHandler
+    ): Observable<HttpEvent<any>> {
+
+        const idToken = localStorage.getItem("id_token");
+
+        if (idToken) {
+            const cloned = req.clone({
+                headers: req.headers.set("Authorization",
+                    "Bearer " + idToken)
+            });
+
+            return next.handle(cloned);
+        }
+        else {
+            return next.handle(req);
+        }
+    }
+}
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +46,42 @@ export class ApiService {
   };
 
   constructor(
-    private http: HttpClient) { }
+    private http: HttpClient,
+    public snackBar: MatSnackBar,
+  ) { }
+
+    login(username: string, password: string) {
+      return this.http.post<User>(this.apiRoot.concat('token/'), {username, password}).pipe(
+        tap(res => this.setSession(res))
+      );
+    }
+
+    private setSession(authResult) {
+      localStorage.setItem('id_token', authResult.access);
+      const now = new Date();
+      const expires = new Date(now.getTime() + 5*60*1000);
+      localStorage.setItem('expires_at', JSON.stringify(expires.getTime()));
+    }
+
+    logout() {
+      localStorage.removeItem('id_token');
+      localStorage.removeItem('expires_at');
+      this.snackBar.open(`Logged out`, 'Close');
+    }
+
+    public isLoggedIn() {
+      const now = new Date();
+      return (now.getTime() < this.getExpiration().getTime());
+    }
+
+    isLoggedOut() {
+      return !this.isLoggedIn();
+    }
+
+    getExpiration() {
+      const expiration = localStorage.getItem('expires_at');
+      return new Date(JSON.parse(expiration));
+    }
 
   getPlayers(): Observable<Player[]> {
     return this.http.get<Player[]>(this.apiRoot.concat('players/'));
