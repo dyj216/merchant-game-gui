@@ -8,7 +8,7 @@ import {CountdownComponent, CountdownConfig, CountdownEvent} from 'ngx-countdown
   styleUrls: ['./round-counter.component.scss']
 })
 export class RoundCounterComponent implements OnInit {
-  currentRound: number;
+  currentRound: number = 0;
   roundTime: number;
   gameData;
   @ViewChild('cd', { static: false }) private countdown: CountdownComponent;
@@ -19,7 +19,14 @@ export class RoundCounterComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getGameData();
+    if (this.apiService.getApiRoot()) {
+      this.getGameData();
+    }
+    this.apiService.getApiRootBehaviorSubject().subscribe(
+      (data) => {
+        if (this.apiService.getApiRoot()) this.getGameData();
+      }
+    );
   }
 
   getGameData(): void {
