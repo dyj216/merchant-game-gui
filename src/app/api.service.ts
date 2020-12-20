@@ -90,7 +90,7 @@ export class ApiService {
   getPlayer(id: string): Observable<Player> {
     return this.http.get<Player>(this.apiRoot.concat('players/').concat(id))
       .pipe(
-        catchError(this.handleError<Player>('getPlayer', {code: '', items: {}, money: 0, loans: [], paybacks: []}))
+        catchError(this.handleError<Player>('getPlayer', {code: '', items: {}, money: 0, loans: [], paybacks: []}, id)),
       );
   }
 
@@ -151,11 +151,20 @@ export class ApiService {
     return this.http.get(this.apiRoot.concat('game-data'), this.httpOptions);
   }
 
-  private handleError<T>(operation = 'operation', result?: T) {
+  private handleError<T>(operation = 'operation', result?: T, o?: string) {
     return (error: any): Observable<T> => {
 
       // TODO: send the error to remote logging infrastructure
       console.error(error); // log to console instead
+
+      if (error.status === 403) {
+        this.snackBar.open('This functionality needs authentication', 'Close');
+      }
+
+      if (error.status === 404) {
+        const text = o ? `'${o}'` : 'Object';
+        this.snackBar.open(`'${text}' is not found`, 'Close')
+      }
 
       // TODO: better job of transforming error for user consumption
       console.log(`${operation} failed: ${error.message}`);
