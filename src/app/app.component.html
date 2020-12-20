@@ -1,7 +1,9 @@
 <div class="mat-app-background basic-container">
   <div class="container" [class.is-mobile]="mobileQuery.matches">
     <mat-toolbar color="primary" class="toolbar">
-      <a class="mat-focus-indicator mat-button app-name" routerLink="">{{ title }}</a>
+      <button mat-icon-button>
+        <mat-icon routerLink="">home</mat-icon>
+      </button>
       <span class="spacer"></span>
       <app-round-counter></app-round-counter>
       <app-user-menu></app-user-menu>
