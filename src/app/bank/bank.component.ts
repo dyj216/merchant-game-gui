@@ -90,7 +90,7 @@ export class BankComponent implements OnInit {
     });
   }
 
-  getLoans(playerReady: boolean): void {
+  getLoans(): void {
     this.loans = [];
     this.player.currentPlayer.loans.forEach((loan) => {
       this.getLoan(loan);

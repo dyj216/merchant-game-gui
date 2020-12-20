@@ -3,7 +3,7 @@
 <mat-tab-group mat-stretch-tabs dynamicHeight class="example-stretched-tabs mat-elevation-z4">
   <mat-tab label="Loan">
     <div class="mat-tab-content">
-      <app-players [inline]="true" (playerReady)="getLoans($event)"></app-players>
+      <app-players [inline]="true" (playerReady)="getLoans()"></app-players>
       <div *ngIf="player?.currentPlayer" class="player-loans">
         <button mat-flat-button color="primary">Get new loan</button>
         <mat-accordion>
