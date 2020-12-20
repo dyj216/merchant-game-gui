@@ -34,12 +34,10 @@ import { UserMenuComponent } from './user-menu/user-menu.component';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarModule} from '@angular/material/snack-bar';
-import { JwtModule } from '@auth0/angular-jwt';
+import {JWT_OPTIONS, JwtModule} from '@auth0/angular-jwt';
 import { SettingsComponent } from './settings/settings.component';
+import {jwtOptions} from './jwt';
 
-export function tokenGetter() {
-  return localStorage.getItem('access_token');
-}
 
 @NgModule({
   declarations: [
@@ -82,9 +80,9 @@ export function tokenGetter() {
     MatDialogModule,
     MatSnackBarModule,
     JwtModule.forRoot({
-      config: {
-        tokenGetter: tokenGetter,
-        allowedDomains: ['127.0.0.1:8000'],
+      jwtOptionsProvider: {
+        provide: JWT_OPTIONS,
+        useFactory: jwtOptions.options,
       },
     }),
   ],

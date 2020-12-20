@@ -7,6 +7,7 @@ import {catchError, tap} from 'rxjs/operators';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import {Router} from '@angular/router';
+import {jwtOptions} from './jwt';
 
 interface User {
   username,
@@ -43,10 +44,13 @@ export class ApiService {
     }
 
     setApiRoot(address: string) {
-      address = address.endsWith('/') ? address : address.concat('/');
       return this.http.get<any>(address.concat('check/'), this.httpOptions).pipe(
         tap(res => {
           if (res.api_root) {
+            let url = document.createElement('a');
+            url.href = address;
+            jwtOptions.addToAllowedDomainList(url.host);
+            address = address.endsWith('/') ? address : address.concat('/');
             localStorage.setItem('api_root', res.api_root)
             this.apiRoot.next(res.api_root);
           }
