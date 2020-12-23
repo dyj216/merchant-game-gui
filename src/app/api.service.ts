@@ -7,12 +7,14 @@ import {catchError, tap} from 'rxjs/operators';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import {Router} from '@angular/router';
-import {jwtOptions} from './jwt';
+import {tokenGetter} from './jwt';
 
 interface User {
   username,
   password,
 }
+
+const helper = new JwtHelperService();
 
 @Injectable({
   providedIn: 'root'
@@ -26,7 +28,6 @@ export class ApiService {
   constructor(
     private http: HttpClient,
     public snackBar: MatSnackBar,
-    public jwtHelperService: JwtHelperService,
     private router: Router,
   ) { }
 
@@ -49,7 +50,6 @@ export class ApiService {
           if (res.api_root) {
             let url = document.createElement('a');
             url.href = address;
-            jwtOptions.addToAllowedDomainList(url.host);
             address = address.endsWith('/') ? address : address.concat('/');
             localStorage.setItem('api_root', res.api_root)
             this.apiRoot.next(res.api_root);
@@ -75,7 +75,7 @@ export class ApiService {
     }
 
     public isLoggedIn() {
-      return (!this.jwtHelperService.isTokenExpired(this.jwtHelperService.tokenGetter()));
+      return (!helper.isTokenExpired(tokenGetter()));
     }
 
     isLoggedOut() {
@@ -93,15 +93,22 @@ export class ApiService {
       );
   }
 
+  getHttpOptionsWithToken() {
+    return {
+      headers: tokenGetter() ?
+        this.httpOptions.headers.set('Authorization', 'Bearer ' + tokenGetter()) : this.httpOptions.headers
+    }
+  }
+
   getCities(): Observable<CityListElement[]> {
-    return this.http.get<CityListElement[]>(this.getApiRoot().concat('cities/'))
+    return this.http.get<CityListElement[]>(this.getApiRoot().concat('cities/'), this.getHttpOptionsWithToken())
       .pipe(
         catchError(this.handleError<CityListElement[]>('getCities', []))
       );
   }
 
   getCityCurrentRates(cityName: string): Observable<any>{
-    return this.http.get<any>(this.getApiRoot().concat(`cities/${cityName}/current_rates/`))
+    return this.http.get<any>(this.getApiRoot().concat(`cities/${cityName}/current_rates/`), this.getHttpOptionsWithToken())
       .pipe(
         catchError(this.handleError<any>('getCityCurrentRates', {}))
       );
@@ -112,14 +119,14 @@ export class ApiService {
       player,
       item,
       amount
-    }, this.httpOptions);
+    }, this.getHttpOptionsWithToken());
   }
 
   rob(robber: string, robType: string, robbed: string): Observable<any> {
     return this.http.post(this.getApiRoot().concat(`players/${robber}/rob/`), {
       robbed,
       rob_money: robType === 'money'
-    }, this.httpOptions);
+    }, this.getHttpOptionsWithToken());
   }
 
   gift(giver: string, taker: string, money: number, items: object): Observable<any> {
@@ -127,23 +134,23 @@ export class ApiService {
       taker,
       money,
       items
-    }, this.httpOptions);
+    }, this.getHttpOptionsWithToken());
   }
 
   getLoan(url): Observable<any> {
-    return this.http.get(url, this.httpOptions);
+    return this.http.get(url, this.getHttpOptionsWithToken());
   }
 
   getPayback(id): Observable<any> {
-    return this.http.get(this.getApiRoot().concat(`loan-paybacks/${id}/`), this.httpOptions);
+    return this.http.get(this.getApiRoot().concat(`loan-paybacks/${id}/`), this.getHttpOptionsWithToken());
   }
 
   payback(url): Observable<any> {
-    return this.http.post(url, {}, this.httpOptions);
+    return this.http.post(url, {}, this.getHttpOptionsWithToken());
   }
 
   getEndData(): Observable<object> {
-    return this.http.get(this.getApiRoot().concat(`end`), this.httpOptions);
+    return this.http.get(this.getApiRoot().concat(`end`), this.getHttpOptionsWithToken());
   }
 
   getGameData(): Observable<any> {
