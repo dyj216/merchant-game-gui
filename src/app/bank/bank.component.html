@@ -5,7 +5,7 @@
     <div class="mat-tab-content">
       <app-players [inline]="true" (playerReady)="getLoans()"></app-players>
       <div *ngIf="player?.currentPlayer" class="player-loans">
-        <button mat-flat-button color="primary">Get new loan</button>
+        <button mat-flat-button color="primary" (click)="getNewLoan()">Get new loan</button>
         <mat-accordion>
           <mat-expansion-panel role="listitem" *ngFor="let loan of loans">
             <mat-expansion-panel-header>

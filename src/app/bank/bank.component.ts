@@ -97,6 +97,19 @@ export class BankComponent implements OnInit {
     });
   }
 
+  getNewLoan() {
+    this.apiService.loan(this.player.currentPlayer.code).subscribe(
+      (response) => {
+        this.expandedElement = null;
+        this.player.getPlayer();
+      },
+      (error) => {
+        if (error.error.non_field_errors) {
+          this.apiService.snackBar.open(error.error.non_field_errors[0], 'Close');
+        }}
+    );
+  }
+
   payback(loan): void {
     this.apiService.payback(loan.pay_back_loan).subscribe(payback => loan.payback = payback);
   }

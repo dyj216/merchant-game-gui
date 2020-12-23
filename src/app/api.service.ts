@@ -142,6 +142,14 @@ export class ApiService {
     return this.http.get(url, this.getHttpOptionsWithToken());
   }
 
+  loan(player): Observable<any> {
+    return this.http.post(
+      this.getApiRoot().concat(`loans/`),
+      {player, round: this.currentRound.value},
+      this.getHttpOptionsWithToken()
+    );
+  }
+
   getPayback(id): Observable<any> {
     return this.http.get(this.getApiRoot().concat(`loan-paybacks/${id}/`), this.getHttpOptionsWithToken());
   }
