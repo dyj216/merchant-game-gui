@@ -3,7 +3,7 @@ import {Player} from './player';
 import {CityListElement} from './city-list-element';
 import {BehaviorSubject, Observable, of} from 'rxjs';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {catchError, tap} from 'rxjs/operators';
+import {catchError, map, tap} from 'rxjs/operators';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import {Router} from '@angular/router';
@@ -21,6 +21,7 @@ const helper = new JwtHelperService();
 })
 export class ApiService {
   private apiRoot = new BehaviorSubject('');
+  public currentRound = new BehaviorSubject(0);
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
@@ -154,7 +155,12 @@ export class ApiService {
   }
 
   getGameData(): Observable<any> {
-    return this.http.get(this.getApiRoot().concat('game-data'), this.httpOptions);
+    return this.http.get<Array<any>>(this.getApiRoot().concat('game-data'), this.httpOptions).pipe(
+      map(res => res.pop()),
+      tap(res=> {
+        this.currentRound.next(res.current_round);
+      })
+    );
   }
 
   private handleError<T>(operation = 'operation', result?: T, o?: string) {
