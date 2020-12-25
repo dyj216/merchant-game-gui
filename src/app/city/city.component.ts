@@ -63,14 +63,16 @@ export class CityComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      switch (playerCodeType) {
-        case PlayerCodeType.Robbed: {
-          this.robbedPlayerCode = result;
-          break;
-        }
-        case PlayerCodeType.Gifted: {
-          this.giftedPlayerCode = result;
-          break;
+      if (result) {
+        switch (playerCodeType) {
+          case PlayerCodeType.Robbed: {
+            this.robbedPlayerCode = result;
+            break;
+          }
+          case PlayerCodeType.Gifted: {
+            this.giftedPlayerCode = result;
+            break;
+          }
         }
       }
     });

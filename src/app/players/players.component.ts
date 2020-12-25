@@ -31,9 +31,11 @@ export class PlayersComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      this.currentPlayerCode = result;
-      if (this.inline) this.getPlayer();
-      else this.router.navigate(['/', 'players', this.currentPlayerCode]);
+      if (result) {
+        this.currentPlayerCode = result;
+        if (this.inline) this.getPlayer();
+        else this.router.navigate(['/', 'players', this.currentPlayerCode]);
+      }
     });
   }
 
