@@ -60,6 +60,15 @@ export class BankComponent implements OnInit {
           });
         }
       }
+    },
+    error => {
+      if (error.error.detail) {
+        this.apiService.snackBar.open(error.error.detail, 'Close');
+      }
+      else {
+        this.apiService.snackBar.open('An error happened!', 'Close');
+        console.log(error);
+      }
     });
   }
 
@@ -106,7 +115,15 @@ export class BankComponent implements OnInit {
       (error) => {
         if (error.error.non_field_errors) {
           this.apiService.snackBar.open(error.error.non_field_errors[0], 'Close');
-        }}
+        }
+        else if (error.error.detail) {
+          this.apiService.snackBar.open(error.error.detail, 'Close');
+        }
+        else {
+          this.apiService.snackBar.open('An error happened!', 'Close')
+          console.log(error);
+        }
+      }
     );
   }
 
