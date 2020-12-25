@@ -3,7 +3,7 @@ import {ActivatedRoute} from '@angular/router';
 import {ApiService} from '../api.service';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import {PlayersComponent} from '../players/players.component';
-import {Observable} from "rxjs";
+import {Observable} from 'rxjs';
 
 interface Price {
   buy_price: number;

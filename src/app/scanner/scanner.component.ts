@@ -1,6 +1,6 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {ZXingScannerComponent} from '@zxing/ngx-scanner';
-import {MatDialogRef} from "@angular/material/dialog";
+import {MatDialogRef} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-scanner',
