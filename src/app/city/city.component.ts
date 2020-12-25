@@ -145,25 +145,31 @@ export class CityComponent implements OnInit {
   }
 
   rob(): void {
-    this.apiService.rob(this.player.currentPlayer.code, this.robType, this.robbedPlayerCode).subscribe(
-      (response) => {
-        console.log(response);
-        this.robbedPlayerCode = '';
-        this.player.getPlayer();
-        this.prepareDataSource();
-      }
-    );
+    if (this.player.currentPlayer) {
+      this.apiService.rob(this.player.currentPlayer.code, this.robType, this.robbedPlayerCode).subscribe(
+        (response) => {
+          console.log(response);
+          this.robbedPlayerCode = '';
+          this.player.getPlayer();
+          this.prepareDataSource();
+        }
+      );
+    }
+    else this.apiService.snackBar.open('Robber is missing!', 'Close');
   }
 
   gift(): void {
-    this.apiService.gift(this.player.currentPlayer.code, this.giftedPlayerCode, this.giftedMoney, this.giftedItems).subscribe(
-      (response) => {
-        console.log(response);
-        this.giftedPlayerCode = '';
-        this.giftedItems = {};
-        this.player.getPlayer();
-        this.prepareDataSource();
-      }
-    );
+    if (this.player.currentPlayer) {
+      this.apiService.gift(this.player.currentPlayer.code, this.giftedPlayerCode, this.giftedMoney, this.giftedItems).subscribe(
+        (response) => {
+          console.log(response);
+          this.giftedPlayerCode = '';
+          this.giftedItems = {};
+          this.player.getPlayer();
+          this.prepareDataSource();
+        }
+      );
+    }
+    else this.apiService.snackBar.open('Donor is missing!', 'Close');
   }
 }
