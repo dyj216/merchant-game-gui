@@ -1,6 +1,9 @@
 import {Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
 import { ApiService } from '../api.service';
 import {Player} from '../player';
+import {MatDialog} from '@angular/material/dialog';
+import {ScannerComponent} from '../scanner/scanner.component';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-players',
@@ -13,9 +16,25 @@ export class PlayersComponent implements OnInit {
   currentPlayerCode = '';
   currentPlayer: Player = null;
 
-  constructor(private apiService: ApiService) {}
+  constructor(
+    public dialog: MatDialog,
+    private apiService: ApiService,
+    private router: Router,
+  ) {}
 
   ngOnInit(): void {
+  }
+
+  openScannerDialog() {
+    const dialogRef = this.dialog.open(ScannerComponent, {
+      width: '400px',
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.currentPlayerCode = result;
+      if (this.inline) this.getPlayer();
+      else this.router.navigate(['/', 'players', this.currentPlayerCode]);
+    });
   }
 
   getPlayer(): void {

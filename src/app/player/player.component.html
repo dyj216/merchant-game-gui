@@ -1,13 +1,23 @@
 <h1 *ngIf="currentPlayer" class="player-title">Player: {{currentPlayer.code}}</h1>
-<mat-table *ngIf="currentPlayer" [dataSource]="dataSource" class="mat-elevation-z8">
-  <ng-container matColumnDef="name">
-    <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
-    <mat-cell *matCellDef="let element"> {{element.name | titlecase}} </mat-cell>
-  </ng-container>
-  <ng-container matColumnDef="value">
-    <mat-header-cell *matHeaderCellDef> Value </mat-header-cell>
-    <mat-cell *matCellDef="let element"> {{element.value}} </mat-cell>
-  </ng-container>
-  <mat-header-row *matHeaderRowDef="displayedColumns" class="player-table-header"></mat-header-row>
-  <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
-</mat-table>
+
+<mat-tab-group *ngIf="currentPlayer" mat-stretch-tabs dynamicHeight class="example-stretched-tabs mat-elevation-z4">
+  <mat-tab label="Valuables">
+    <mat-table *ngIf="currentPlayer" [dataSource]="dataSource" class="mat-elevation-z8">
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.name | titlecase}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="value">
+        <mat-header-cell *matHeaderCellDef> Value </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.value}} </mat-cell>
+      </ng-container>
+      <mat-header-row *matHeaderRowDef="displayedColumns" class="player-table-header"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+    </mat-table>
+  </mat-tab>
+  <mat-tab label="QR code">
+    <div class="qr-code-container">
+      <qr-code value="{{currentPlayer.code}}" size="400"></qr-code>
+    </div>
+  </mat-tab>
+</mat-tab-group>

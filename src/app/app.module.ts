@@ -35,7 +35,10 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarModule} from '@angular/material/snack-bar';
 import { SettingsComponent } from './settings/settings.component';
-import {JwtModule} from "@auth0/angular-jwt";
+import {JwtModule} from '@auth0/angular-jwt';
+import { ZXingScannerModule } from '@zxing/ngx-scanner';
+import { ScannerComponent } from './scanner/scanner.component';
+import { QrCodeModule } from 'ng-qrcode';
 
 
 @NgModule({
@@ -52,6 +55,7 @@ import {JwtModule} from "@auth0/angular-jwt";
     LoginComponent,
     UserMenuComponent,
     SettingsComponent,
+    ScannerComponent,
   ],
   imports: [
     AppRoutingModule,
@@ -79,6 +83,8 @@ import {JwtModule} from "@auth0/angular-jwt";
     MatDialogModule,
     MatSnackBarModule,
     JwtModule,
+    ZXingScannerModule,
+    QrCodeModule,
   ],
   providers: [
     {
@@ -90,6 +96,7 @@ import {JwtModule} from "@auth0/angular-jwt";
   entryComponents: [
     LoginComponent,
     SettingsComponent,
+    ScannerComponent,
   ],
   bootstrap: [AppComponent]
 })

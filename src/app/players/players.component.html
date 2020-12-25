@@ -3,6 +3,13 @@
     <mat-label>Player code</mat-label>
     <input matInput type="text" [(ngModel)]="currentPlayerCode">
   </mat-form-field>
-  <button *ngIf="!inline" mat-flat-button color="primary" routerLink="{{currentPlayerCode}}">Get</button>
-  <button *ngIf="inline" mat-flat-button color="primary" (click)="getPlayer()">Get</button>
+  <button mat-icon-button color="primary" (click)="openScannerDialog()">
+    <mat-icon>photo_camera</mat-icon>
+  </button>
+  <button *ngIf="!inline" mat-icon-button color="primary" routerLink="{{currentPlayerCode}}">
+    <mat-icon>search</mat-icon>
+  </button>
+  <button *ngIf="inline" mat-icon-button color="primary" (click)="getPlayer()">
+    <mat-icon>search</mat-icon>
+  </button>
 </div>
