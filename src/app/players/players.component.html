@@ -2,10 +2,10 @@
   <mat-form-field class="player-search-field">
     <mat-label>Player code</mat-label>
     <input matInput type="text" [(ngModel)]="currentPlayerCode">
+    <button mat-button color="primary" matSuffix mat-icon-button aria-label="Read QR code" (click)="openScannerDialog()">
+      <mat-icon>photo_camera</mat-icon>
+    </button>
   </mat-form-field>
-  <button mat-icon-button color="primary" (click)="openScannerDialog()">
-    <mat-icon>photo_camera</mat-icon>
-  </button>
   <button *ngIf="!inline" mat-icon-button color="primary" routerLink="{{currentPlayerCode}}">
     <mat-icon>search</mat-icon>
   </button>

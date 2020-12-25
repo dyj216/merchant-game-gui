@@ -60,6 +60,9 @@
       <mat-form-field appearance="fill">
         <mat-label>Robbed player code</mat-label>
         <input matInput type="text" [(ngModel)]="robbedPlayerCode">
+        <button mat-button color="primary" matSuffix mat-icon-button aria-label="Read QR code" (click)="openScannerDialog(ePlayerCodeType.Robbed)">
+          <mat-icon>photo_camera</mat-icon>
+        </button>
       </mat-form-field>
       <mat-radio-group aria-label="Rob type" [(ngModel)]="robType">
         <mat-radio-button value="money">Money</mat-radio-button>
@@ -74,6 +77,9 @@
       <mat-form-field appearance="fill">
         <mat-label>Gifted player code</mat-label>
         <input matInput type="text" [(ngModel)]="giftedPlayerCode">
+        <button mat-button color="primary" matSuffix mat-icon-button aria-label="Read QR code" (click)="openScannerDialog(ePlayerCodeType.Gifted)">
+          <mat-icon>photo_camera</mat-icon>
+        </button>
       </mat-form-field>
       <div *ngIf="player?.currentPlayer">
         <mat-form-field appearance="fill">

@@ -3,10 +3,17 @@ import {ActivatedRoute} from '@angular/router';
 import {ApiService} from '../api.service';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import {PlayersComponent} from '../players/players.component';
+import {ScannerComponent} from '../scanner/scanner.component';
+import {MatDialog} from '@angular/material/dialog';
 
 interface Price {
   buy_price: number;
   sell_price: number;
+}
+
+enum PlayerCodeType {
+  Robbed = 'Robbed',
+  Gifted = 'Gifted',
 }
 
 
@@ -39,12 +46,34 @@ export class CityComponent implements OnInit {
   giftedMoney: number;
   giftedItems = {};
 
+  ePlayerCodeType = PlayerCodeType;
+
   constructor(
+    public dialog: MatDialog,
     private route: ActivatedRoute,
     private apiService: ApiService) { }
 
   ngOnInit(): void {
     this.getCity();
+  }
+
+  openScannerDialog(playerCodeType: PlayerCodeType) {
+    const dialogRef = this.dialog.open(ScannerComponent, {
+      width: '400px',
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      switch (playerCodeType) {
+        case PlayerCodeType.Robbed: {
+          this.robbedPlayerCode = result;
+          break;
+        }
+        case PlayerCodeType.Gifted: {
+          this.giftedPlayerCode = result;
+          break;
+        }
+      }
+    });
   }
 
   toggleDetails(element): void {
