@@ -17,7 +17,7 @@
   </mat-tab>
   <mat-tab label="QR code">
     <div class="qr-code-container">
-      <qr-code value="{{currentPlayer.code}}" size="400"></qr-code>
+      <ngx-kjua [text]="currentPlayer.code" [size]="400"></ngx-kjua>
     </div>
   </mat-tab>
 </mat-tab-group>

@@ -38,7 +38,7 @@ import { SettingsComponent } from './settings/settings.component';
 import {JwtModule} from '@auth0/angular-jwt';
 import { ZXingScannerModule } from '@zxing/ngx-scanner';
 import { ScannerComponent } from './scanner/scanner.component';
-import { QrCodeModule } from 'ng-qrcode';
+import { NgxKjuaModule } from 'ngx-kjua';
 
 
 @NgModule({
@@ -84,7 +84,7 @@ import { QrCodeModule } from 'ng-qrcode';
     MatSnackBarModule,
     JwtModule,
     ZXingScannerModule,
-    QrCodeModule,
+    NgxKjuaModule,
   ],
   providers: [
     {
