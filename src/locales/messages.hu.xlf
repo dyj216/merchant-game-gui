@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-  <file source-language="en" datatype="plaintext" original="ng2.template">
+  <file source-language="en-US" datatype="plaintext" original="ng2.template">
     <body>
       <trans-unit id="Close" datatype="html">
         <source>Close</source>
+        <target>Bezár</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/scanner/scanner.component.html</context>
           <context context-type="linenumber">5</context>
@@ -19,6 +20,7 @@
       </trans-unit>
       <trans-unit id="25926fc68f0608fef22fbe661df286e7d0af6cb9" datatype="html">
         <source>Player code</source>
+        <target>Játékos kód</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/players/players.component.html</context>
           <context context-type="linenumber">3</context>
@@ -27,6 +29,7 @@
       </trans-unit>
       <trans-unit id="ReadQRCode" datatype="html">
         <source>Read QR code</source>
+        <target>QR kód olvasása</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/players/players.component.html</context>
           <context context-type="linenumber">5</context>
@@ -42,6 +45,7 @@
       </trans-unit>
       <trans-unit id="d27b38099827456b536d43c218ed23d46dd39d69" datatype="html">
         <source>Page not found!</source>
+        <target>Oldal nem található!</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/page-not-found/page-not-found.component.html</context>
           <context context-type="linenumber">1</context>
@@ -49,6 +53,7 @@
       </trans-unit>
       <trans-unit id="Players" datatype="html">
         <source>Players</source>
+        <target>Játékosok</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/view-selector/view-selector.component.html</context>
           <context context-type="linenumber">2</context>
@@ -56,6 +61,7 @@
       </trans-unit>
       <trans-unit id="Cities" datatype="html">
         <source>Cities</source>
+        <target>Városok</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/view-selector/view-selector.component.html</context>
           <context context-type="linenumber">3</context>
@@ -63,6 +69,7 @@
       </trans-unit>
       <trans-unit id="Bank" datatype="html">
         <source>Bank</source>
+        <target>Bank</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/view-selector/view-selector.component.html</context>
           <context context-type="linenumber">4</context>
@@ -70,6 +77,7 @@
       </trans-unit>
       <trans-unit id="Name" datatype="html">
         <source>Name</source>
+        <target>Név</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/city/city.component.html</context>
           <context context-type="linenumber">9</context>
@@ -81,6 +89,7 @@
       </trans-unit>
       <trans-unit id="BuyPrice" datatype="html">
         <source>Buy Price</source>
+        <target>Vásárlási ár</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/city/city.component.html</context>
           <context context-type="linenumber">13</context>
@@ -88,6 +97,7 @@
       </trans-unit>
       <trans-unit id="SellPrice" datatype="html">
         <source>Sell Price</source>
+        <target>Eladási ár</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/city/city.component.html</context>
           <context context-type="linenumber">17</context>
@@ -95,6 +105,7 @@
       </trans-unit>
       <trans-unit id="money_with_amount" datatype="html">
         <source>Money: <x id="INTERPOLATION" equiv-text="{{ getMoney() }}"/></source>
+        <target>Pénz: <x id="INTERPOLATION" equiv-text="{{ getMoney() }}"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/city/city.component.html</context>
           <context context-type="linenumber">27</context>
@@ -102,6 +113,7 @@
       </trans-unit>
       <trans-unit id="owned_with_amounts" datatype="html">
         <source>Owned: <x id="INTERPOLATION" equiv-text="{{ getOwned(element) }}"/></source>
+        <target>Birtokolt: <x id="INTERPOLATION" equiv-text="{{ getOwned(element) }}"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/city/city.component.html</context>
           <context context-type="linenumber">28</context>
@@ -109,6 +121,7 @@
       </trans-unit>
       <trans-unit id="Buy" datatype="html">
         <source>Buy</source>
+        <target>Vásárol</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/city/city.component.html</context>
           <context context-type="linenumber">31</context>
@@ -116,6 +129,7 @@
       </trans-unit>
       <trans-unit id="Sell" datatype="html">
         <source>Sell</source>
+        <target>Elad</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/city/city.component.html</context>
           <context context-type="linenumber">32</context>
@@ -123,6 +137,7 @@
       </trans-unit>
       <trans-unit id="TradeDirection" datatype="html">
         <source>Trade direction</source>
+        <target>Kereskedés iránya</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/city/city.component.html</context>
           <context context-type="linenumber">30</context>
@@ -130,6 +145,7 @@
       </trans-unit>
       <trans-unit id="Amount" datatype="html">
         <source>Amount</source>
+        <target>Mennyiség</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/city/city.component.html</context>
           <context context-type="linenumber">37</context>
@@ -137,6 +153,7 @@
       </trans-unit>
       <trans-unit id="value_with_value" datatype="html">
         <source>Value: <x id="INTERPOLATION" equiv-text="{{ getValue(element) }}"/></source>
+        <target>Értéke: <x id="INTERPOLATION" equiv-text="{{ getValue(element) }}"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/city/city.component.html</context>
           <context context-type="linenumber">42</context>
@@ -144,6 +161,7 @@
       </trans-unit>
       <trans-unit id="Trade" datatype="html">
         <source>Trade</source>
+        <target>Kereskedés</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/city/city.component.html</context>
           <context context-type="linenumber">43</context>
@@ -155,6 +173,7 @@
       </trans-unit>
       <trans-unit id="1c0041fff5a890406c1d0597721129860174b358" datatype="html">
         <source>The above selected player is the robber.</source>
+        <target>A fent kiválasztott játékos a rabló.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/city/city.component.html</context>
           <context context-type="linenumber">60</context>
@@ -162,6 +181,7 @@
       </trans-unit>
       <trans-unit id="ab78ece49b2d8b7b71472a811d06f54c71889f34" datatype="html">
         <source>Robbed player code</source>
+        <target>Kirabolt játékos kódja</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/city/city.component.html</context>
           <context context-type="linenumber">62</context>
@@ -169,6 +189,7 @@
       </trans-unit>
       <trans-unit id="Money" datatype="html">
         <source>Money</source>
+        <target>Pénz</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/city/city.component.html</context>
           <context context-type="linenumber">69</context>
@@ -180,6 +201,7 @@
       </trans-unit>
       <trans-unit id="Items" datatype="html">
         <source>Items</source>
+        <target>Tárgyak</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/city/city.component.html</context>
           <context context-type="linenumber">70</context>
@@ -187,6 +209,7 @@
       </trans-unit>
       <trans-unit id="RobType" datatype="html">
         <source>Rob type</source>
+        <target>Rablás típusa</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/city/city.component.html</context>
           <context context-type="linenumber">68</context>
@@ -194,6 +217,7 @@
       </trans-unit>
       <trans-unit id="Rob" datatype="html">
         <source>Rob</source>
+        <target>Rablás</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/city/city.component.html</context>
           <context context-type="linenumber">72</context>
@@ -205,6 +229,7 @@
       </trans-unit>
       <trans-unit id="040eeb5b23ce1a6385dcb300ea6d92d1906dab1b" datatype="html">
         <source>The above selected player is the donor.</source>
+        <target>A fent kiválasztott játékos az ajándékozó.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/city/city.component.html</context>
           <context context-type="linenumber">78</context>
@@ -212,6 +237,7 @@
       </trans-unit>
       <trans-unit id="791905bf5e4f9b07cf96caea6045f7d715950ca8" datatype="html">
         <source>Gifted player code</source>
+        <target>Ajándékozott játékos kódja</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/city/city.component.html</context>
           <context context-type="linenumber">80</context>
@@ -219,6 +245,7 @@
       </trans-unit>
       <trans-unit id="Gift" datatype="html">
         <source>Gift</source>
+        <target>Ajándékozás</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/city/city.component.html</context>
           <context context-type="linenumber">100</context>
@@ -230,6 +257,7 @@
       </trans-unit>
       <trans-unit id="Player" datatype="html">
         <source>Player: <x id="INTERPOLATION" equiv-text="{{currentPlayer.code}}"/></source>
+        <target>Játékos: <x id="INTERPOLATION" equiv-text="{{currentPlayer.code}}"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/player/player.component.html</context>
           <context context-type="linenumber">1</context>
@@ -237,6 +265,7 @@
       </trans-unit>
       <trans-unit id="Value" datatype="html">
         <source>Value</source>
+        <target>Érték</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/player/player.component.html</context>
           <context context-type="linenumber">11</context>
@@ -244,6 +273,7 @@
       </trans-unit>
       <trans-unit id="Valuables" datatype="html">
         <source>Valuables</source>
+        <target>Értékek</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/player/player.component.html</context>
           <context context-type="linenumber">4</context>
@@ -251,6 +281,7 @@
       </trans-unit>
       <trans-unit id="QRcode" datatype="html">
         <source>QR code</source>
+        <target>QR kód</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/player/player.component.html</context>
           <context context-type="linenumber">30</context>
@@ -258,6 +289,7 @@
       </trans-unit>
       <trans-unit id="get_new_loan" datatype="html">
         <source>Get new loan</source>
+        <target>Új hitel felvétele</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/bank/bank.component.html</context>
           <context context-type="linenumber">8</context>
@@ -265,6 +297,7 @@
       </trans-unit>
       <trans-unit id="4f2443057e459c7f0451f266dd992019637fba5a" datatype="html">
         <source>Borrowed <x id="INTERPOLATION" equiv-text="{{ loan.amount }}"/> in round <x id="INTERPOLATION_1" equiv-text="{{ loan.round }}"/></source>
+        <target>Kölcsönvett <x id="INTERPOLATION" equiv-text="{{ loan.amount }}"/> pénzt a <x id="INTERPOLATION_1" equiv-text="{{ loan.round }}"/>. körben</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/bank/bank.component.html</context>
           <context context-type="linenumber">13</context>
@@ -273,6 +306,7 @@
       </trans-unit>
       <trans-unit id="payback_info" datatype="html">
         <source>Paid back <x id="INTERPOLATION" equiv-text="{{ loan.payback?.payback_amount }}"/> in round <x id="INTERPOLATION_1" equiv-text="{{ loan.payback?.round?.number }}"/></source>
+        <target>Visszafizetett <x id="INTERPOLATION" equiv-text="{{ loan.payback?.payback_amount }}"/> pénzt a <x id="INTERPOLATION_1" equiv-text="{{ loan.payback?.round?.number }}"/>. körben</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/bank/bank.component.html</context>
           <context context-type="linenumber">16</context>
@@ -280,6 +314,7 @@
       </trans-unit>
       <trans-unit id="495d52264eb3d81644be1034dfb491563de2ad82" datatype="html">
         <source>Pay back</source>
+        <target>Visszafizet</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/bank/bank.component.html</context>
           <context context-type="linenumber">17</context>
@@ -288,6 +323,7 @@
       </trans-unit>
       <trans-unit id="Loan" datatype="html">
         <source>Loan</source>
+        <target>Kölcsön</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/bank/bank.component.html</context>
           <context context-type="linenumber">4</context>
@@ -295,6 +331,7 @@
       </trans-unit>
       <trans-unit id="End" datatype="html">
         <source>End</source>
+        <target>Befejezés</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/bank/bank.component.html</context>
           <context context-type="linenumber">26</context>
@@ -306,6 +343,7 @@
       </trans-unit>
       <trans-unit id="final_money" datatype="html">
         <source><x id="INTERPOLATION" equiv-text="{{element.player}}"/> final money: <x id="INTERPOLATION_1" equiv-text="{{element.final_money}}"/></source>
+        <target><x id="INTERPOLATION" equiv-text="{{element.player}}"/> végső pénz: <x id="INTERPOLATION_1" equiv-text="{{element.final_money}}"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/bank/bank.component.html</context>
           <context context-type="linenumber">31</context>
@@ -316,6 +354,10 @@
   Round: <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span&gt;"/><x id="INTERPOLATION" equiv-text="{{ currentRound }}"/><x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;"/>
   Time left: <x id="START_TAG_COUNTDOWN" ctype="x-countdown" equiv-text="&lt;countdown&gt;"/><x id="CLOSE_TAG_COUNTDOWN" ctype="x-countdown" equiv-text="&lt;/countdown&gt;"/>
 </source>
+        <target>
+  <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span&gt;"/><x id="INTERPOLATION" equiv-text="{{ currentRound }}"/><x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;"/>. kör
+  Hátralévő idő: <x id="START_TAG_COUNTDOWN" ctype="x-countdown" equiv-text="&lt;countdown&gt;"/><x id="CLOSE_TAG_COUNTDOWN" ctype="x-countdown" equiv-text="&lt;/countdown&gt;"/>
+</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/round-counter/round-counter.component.html</context>
           <context context-type="linenumber">1</context>
@@ -323,6 +365,7 @@
       </trans-unit>
       <trans-unit id="Username" datatype="html">
         <source>Username:</source>
+        <target>Felhasználónév:</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/login/login.component.html</context>
           <context context-type="linenumber">3</context>
@@ -330,6 +373,7 @@
       </trans-unit>
       <trans-unit id="Password" datatype="html">
         <source>Password:</source>
+        <target>Jelszó:</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/login/login.component.html</context>
           <context context-type="linenumber">7</context>
@@ -337,6 +381,7 @@
       </trans-unit>
       <trans-unit id="Login" datatype="html">
         <source>Login</source>
+        <target>Bejelentkezés</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/login/login.component.html</context>
           <context context-type="linenumber">13</context>
@@ -348,6 +393,7 @@
       </trans-unit>
       <trans-unit id="Server" datatype="html">
         <source>Server:</source>
+        <target>Szerver:</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/settings/settings.component.html</context>
           <context context-type="linenumber">3</context>
@@ -355,6 +401,7 @@
       </trans-unit>
       <trans-unit id="Set" datatype="html">
         <source>Set</source>
+        <target>Beállít</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/settings/settings.component.html</context>
           <context context-type="linenumber">8</context>
@@ -362,6 +409,7 @@
       </trans-unit>
       <trans-unit id="Clear" datatype="html">
         <source>Clear</source>
+        <target>Töröl</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/settings/settings.component.html</context>
           <context context-type="linenumber">10</context>
@@ -369,6 +417,7 @@
       </trans-unit>
       <trans-unit id="Settings" datatype="html">
         <source>Settings</source>
+        <target>Beállítások</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/user-menu/user-menu.component.html</context>
           <context context-type="linenumber">9</context>
@@ -376,6 +425,7 @@
       </trans-unit>
       <trans-unit id="Logout" datatype="html">
         <source>Logout</source>
+        <target>Kilépés</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/user-menu/user-menu.component.html</context>
           <context context-type="linenumber">17</context>

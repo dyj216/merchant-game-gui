@@ -9,6 +9,12 @@
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
+      "i18n": {
+        "sourceLocale": "en",
+        "locales": {
+          "hu": "src/locales/messages.hu.xlf"
+        }
+      },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -18,6 +24,7 @@
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
+            "localize": true,
             "aot": true,
             "assets": [
               "src/favicon.ico",
@@ -57,6 +64,16 @@
                   "maximumError": "10kb"
                 }
               ]
+            },
+            "en": {
+              "localize": ["en"],
+              "baseHref": "/en/"
+            },
+            "hu": {
+              "localize": [
+                "hu"
+              ],
+              "baseHref": "/hu/"
             }
           }
         },
@@ -68,6 +85,9 @@
           "configurations": {
             "production": {
               "browserTarget": "merchant-game-gui:build:production"
+            },
+            "hu": {
+              "browserTarget": "merchant-game-gui:build:hu"
             }
           }
         },
