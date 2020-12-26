@@ -24,9 +24,7 @@ export class PlayerComponent implements OnInit {
   }
 
   prepareDataSource(): void {
-    this.dataSource = [
-      {name: 'Money', value: this.currentPlayer.money}
-    ];
+    this.dataSource = [];
     for (const [k, v] of Object.entries(this.currentPlayer.items)) {
       this.dataSource.push({name: k, value: parseInt(v.toString(), 10)});
     }

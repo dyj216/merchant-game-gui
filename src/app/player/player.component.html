@@ -11,7 +11,19 @@
         <mat-header-cell *matHeaderCellDef i18n="@@Value">Value</mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.value}} </mat-cell>
       </ng-container>
+
+      <ng-container matColumnDef="money_name">
+        <mat-header-cell *matHeaderCellDef i18n="@@Money">Money</mat-header-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="money_value">
+        <mat-header-cell *matHeaderCellDef>{{currentPlayer.money}}</mat-header-cell>
+      </ng-container>
+
       <mat-header-row *matHeaderRowDef="displayedColumns" class="player-table-header"></mat-header-row>
+
+      <mat-header-row *matHeaderRowDef="['money_name', 'money_value']"></mat-header-row>
+
       <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
     </mat-table>
   </mat-tab>
