@@ -6,14 +6,14 @@
 <mat-menu #userMenu="matMenu" xPosition="before" yPosition="below">
   <button mat-menu-item (click)="openSettingsDialog()">
     <mat-icon>cloud</mat-icon>
-    <span>Settings</span>
+    <span i18n="@@Settings">Settings</span>
   </button>
   <button mat-menu-item (click)="openLoginDialog()" *ngIf="!isLoggedIn()">
     <mat-icon>login</mat-icon>
-    <span>Login</span>
+    <span i18n="@@Login">Login</span>
   </button>
   <button mat-menu-item (click)="logout()" *ngIf="isLoggedIn()">
     <mat-icon>power_settings_new</mat-icon>
-    <span>Logout</span>
+    <span i18n="@@Logout">Logout</span>
   </button>
 </mat-menu>

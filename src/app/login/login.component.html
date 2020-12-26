@@ -1,16 +1,16 @@
 <form [formGroup]="form">
     <mat-form-field appearance="fill">
-        <mat-label>Username:</mat-label>
+        <mat-label i18n="@@Username">Username:</mat-label>
         <input matInput name="username" formControlName="username">
     </mat-form-field>
     <mat-form-field appearance="fill">
-        <mat-label>Password:</mat-label>
+        <mat-label i18n="@@Password">Password:</mat-label>
         <input matInput name="password" formControlName="password"
                type="password">
     </mat-form-field>
     <div class="form-buttons">
       <button mat-flat-button color="primary"
-                (click)="login()">Login</button>
-      <button mat-button color="primary" (click)="dialogRef.close()">Close</button>
+                (click)="login()" i18n="@@Login">Login</button>
+      <button mat-button color="primary" (click)="dialogRef.close()" i18n="@@Close">Close</button>
     </div>
 </form>

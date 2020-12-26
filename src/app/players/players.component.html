@@ -1,8 +1,8 @@
 <div class="player-search">
   <mat-form-field class="player-search-field">
-    <mat-label>Player code</mat-label>
+    <mat-label i18n="@PlayerCode">Player code</mat-label>
     <input matInput type="text" [(ngModel)]="currentPlayerCode">
-    <button mat-button color="primary" matSuffix mat-icon-button aria-label="Read QR code" (click)="openScannerDialog()">
+    <button mat-button color="primary" matSuffix mat-icon-button i18n-aria-label="@@ReadQRCode" aria-label="Read QR code" (click)="openScannerDialog()">
       <mat-icon>photo_camera</mat-icon>
     </button>
   </mat-form-field>
