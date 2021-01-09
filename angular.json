@@ -86,6 +86,9 @@
             "production": {
               "browserTarget": "merchant-game-gui:build:production"
             },
+            "en": {
+              "browserTarget": "merchant-game-gui:build:en"
+            },
             "hu": {
               "browserTarget": "merchant-game-gui:build:hu"
             }

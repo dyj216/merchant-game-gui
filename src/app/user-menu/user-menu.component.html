@@ -8,6 +8,10 @@
     <mat-icon>cloud</mat-icon>
     <span i18n="@@Settings">Settings</span>
   </button>
+  <button mat-menu-item [matMenuTriggerFor]="language_menu">
+    <mat-icon>language</mat-icon>
+    <span i18n="@@Language">Language</span>
+  </button>
   <button mat-menu-item (click)="openLoginDialog()" *ngIf="!isLoggedIn()">
     <mat-icon>login</mat-icon>
     <span i18n="@@Login">Login</span>
@@ -16,4 +20,14 @@
     <mat-icon>power_settings_new</mat-icon>
     <span i18n="@@Logout">Logout</span>
   </button>
+</mat-menu>
+
+<mat-menu #language_menu="matMenu">
+  <ng-template ngFor let-item [ngForOf]="languages">
+    <a href="{{item.url}}">
+      <button mat-menu-item>
+        <span>{{item.text}}</span>
+      </button>
+    </a>
+  </ng-template>
 </mat-menu>
