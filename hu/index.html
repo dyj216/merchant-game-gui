@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8">
+  <title>MerchantGame</title>
+  <base href="/merchant-game-gui/hu/">  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="styles.fa114c5a29803937d935.css"></head>
+<body class="mat-typography">
+  <!-- Github Pages hack to allow SPA refresh without receiving 404. -->
+  <script>
+    (function () {
+      // Retrieve the URL the user was trying to access when receiving the 404.
+      const redirect = sessionStorage.getItem('redirect');
+      // Remove the URL from sessionStorage.
+      sessionStorage.removeItem('redirect');
+      // Check if we actually need to redirect.
+      if (redirect && redirect !== location.href) {
+        // We need to redirect to the URL the user was trying to access.
+        history.replaceState(null, null, redirect);
+      }
+    })();
+  </script>
+  <!-- /Github Pages hack. -->
+  <app-root></app-root>
+<script src="runtime.494b2a7933c9d92df6b5.js" defer></script><script src="polyfills.c0eea8a9c9b662d2c361.js" defer></script><script src="main.2b7bc7a639b9ad55d887.js" defer></script></body>
+</html>
