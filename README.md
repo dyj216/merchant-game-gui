@@ -2,6 +2,15 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.0.
 
+This project is the web gui consuming the REST API from the following repo: https://github.com/dyj216/merchant_game
+
+## Deployment
+
+* [English version](https://dyj216.github.io/merchant-game-gui/en/)
+* [Hungarian version](https://dyj216.github.io/merchant-game-gui/hu/)
+
+You can read the [Wiki](https://github.com/dyj216/merchant-game-gui/wiki) page to learn how to use the program.
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
